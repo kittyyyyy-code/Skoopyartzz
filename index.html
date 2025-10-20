@@ -1,1 +1,134 @@
-https://kittyyyyy-code.github.io/Skoopyartzz/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Roleplay Chat</title>
+<style>
+  :root {
+    --bg: #1a1a1a;
+    --text: #fff;
+    --accent: #ff90c2;
+  }
+  [data-theme="light"] {
+    --bg: #f7f7f7;
+    --text: #111;
+    --accent: #4b7bec;
+  }
+  body {
+    margin: 0; font-family: "Poppins", sans-serif;
+    background: var(--bg); color: var(--text);
+    display: flex; flex-direction: column; height: 100vh;
+  }
+  header {
+    background: var(--accent);
+    padding: 10px; text-align: center;
+    font-weight: bold; color: white;
+  }
+  #chat {
+    flex: 1; overflow-y: auto; padding: 10px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .msg {
+    background: rgba(255,255,255,0.1);
+    padding: 8px 10px; border-radius: 10px;
+  }
+  .msg img { max-width: 120px; border-radius: 8px; }
+  footer {
+    display: flex; gap: 5px; padding: 8px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+  input, button, select {
+    border: none; border-radius: 8px;
+    padding: 8px; font-size: 14px;
+  }
+  input { flex: 1; background: rgba(255,255,255,0.15); color: var(--text); }
+  button { background: var(--accent); color: white; }
+  #profile {
+    padding: 8px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+</style>
+</head>
+<body>
+<header>🌸 Roleplay Chat 🌸</header>
+<div id="profile">
+  <div>
+    <input id="username" placeholder="Enter username" />
+    <button onclick="saveProfile()">Save</button>
+  </div>
+  <div>
+    Theme:
+    <select id="theme" onchange="changeTheme(this.value)">
+      <option value="dark">Dark</option>
+      <option value="light">Light</option>
+    </select>
+  </div>
+</div>
+<div id="chat"></div>
+<footer>
+  <input id="message" placeholder="Type message..." />
+  <input type="file" id="image" accept="image/*" onchange="sendImage()" />
+  <button onclick="sendMessage()">Send</button>
+</footer>
+
+<script>
+let messages = JSON.parse(localStorage.getItem("messages") || "[]");
+let username = localStorage.getItem("username") || "Guest";
+let chat = document.getElementById("chat");
+
+function renderChat() {
+  chat.innerHTML = "";
+  messages.forEach(m => {
+    const div = document.createElement("div");
+    div.className = "msg";
+    div.innerHTML = `<b>${m.name}:</b> ${m.text || ""}`;
+    if (m.image) {
+      const img = document.createElement("img");
+      img.src = m.image;
+      div.appendChild(document.createElement("br"));
+      div.appendChild(img);
+    }
+    chat.appendChild(div);
+  });
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function sendMessage() {
+  const input = document.getElementById("message");
+  const text = input.value.trim();
+  if (!text) return;
+  messages.push({ name: username, text });
+  input.value = "";
+  localStorage.setItem("messages", JSON.stringify(messages));
+  renderChat();
+}
+
+function sendImage() {
+  const file = document.getElementById("image").files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    messages.push({ name: username, image: e.target.result });
+    localStorage.setItem("messages", JSON.stringify(messages));
+    renderChat();
+  };
+  reader.readAsDataURL(file);
+}
+
+function saveProfile() {
+  username = document.getElementById("username").value.trim() || "Guest";
+  localStorage.setItem("username", username);
+  alert("Profile saved!");
+}
+
+function changeTheme(val) {
+  document.body.dataset.theme = val;
+  localStorage.setItem("theme", val);
+}
+
+document.body.dataset.theme = localStorage.getItem("theme") || "dark";
+document.getElementById("username").value = username;
+renderChat();
+</script>
+</body>
+</html>
