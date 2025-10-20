@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Professional Gay License Generator (Novelty)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bgA: #f6f8fc;
+    --panel:#ffffff;
+    --accent1:#6f2ca2;
+    --accent2:#ff5cc8;
+    --gold:#d6b04a;
+    --muted:#6b6b7a;
+    --glass: rgba(255,255,255,0.7);
+    --cardW:920px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:linear-gradient(180deg,#eef2ff,#fff);font-family:Inter,system-ui,Arial;color:#111;display:flex;align-items:flex-start;justify-content:center;padding:28px}
+  .wrap{width:100%;max-width:1200px;display:grid;grid-template-columns:360px 1fr;gap:20px;align-items:start}
+  .panel{background:var(--panel);border-radius:12px;padding:16px;box-shadow:0 8px 30px rgba(50,50,75,0.08);border:1px solid rgba(15,15,30,0.03)}
+  h1{font-family:'Playfair Display', serif;margin:0 0 6px 0;font-size:20px}
+  p.lead{margin:0 0 12px 0;color:var(--muted);font-size:13px}
+  label{display:block;font-size:13px;color:#333;margin-top:10px}
+  input[type="text"], input[type="date"], select, textarea{width:100%;padding:8px 10px;border-radius:8px;border:1px solid #e6e7eb;font-size:14px;margin-top:6px}
+  textarea{min-height:70px;resize:vertical}
+  .controls-row{display:flex;gap:8px;margin-top:12px}
+  .btn{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#fff;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer;box-shadow:0 8px 18px rgba(111,44,162,0.12)}
+  .btn.ghost{background:transparent;border:1px solid rgba(20,20,40,0.06);color:#222;box-shadow:none}
+  .small{font-size:12px;color:var(--muted)}
+  .fileDrop{border:2px dashed #eee;border-radius:8px;padding:10px;text-align:center;color:var(--muted);margin-top:8px;cursor:pointer}
+  .license-preview{display:flex;align-items:center;justify-content:center;min-height:520px}
+  /* Card styling */
+  .card{
+    width:var(--cardW);max-width:100%;height:280px;border-radius:14px;padding:18px;position:relative;
+    background:linear-gradient(135deg,#fff,#fffaf7);
+    box-shadow:0 12px 40px rgba(40,30,80,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+    border:1px solid rgba(0,0,0,0.06);
+    display:flex;gap:18px;align-items:center;font-family:Inter, sans-serif;
+  }
+  .id-col{width:220px;display:flex;flex-direction:column;gap:8px;justify-content:center}
+  .brand{font-weight:800;color:var(--accent1);font-size:18px;letter-spacing:0.6px}
+  .subtitle{font-size:12px;color:var(--muted);margin-top:2px}
+  .photo{width:112px;height:112px;border-radius:8px;background:linear-gradient(180deg,#eee,#ddd);display:flex;align-items:center;justify-content:center;border:2px solid rgba(0,0,0,0.04);overflow:hidden}
+  .photo img{width:100%;height:100%;object-fit:cover}
+  .info{flex:1;display:flex;flex-direction:column;gap:6px}
+  .name{font-weight:800;font-size:20px;color:#171224}
+  .meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+  .badge{background:linear-gradient(180deg,var(--accent2),var(--accent1));color:#fff;padding:6px 8px;border-radius:999px;font-weight:800;font-size:12px;box-shadow:0 8px 20px rgba(255,92,200,0.12)}
+  .lines{margin-top:10px;display:flex;gap:12px;align-items:center}
+  .barcode{height:40px;width:220px;background:repeating-linear-gradient(90deg,#111 0 6px,#fff 6px 10px);border-radius:4px}
+  .gold-seal{width:88px;height:88px;border-radius:999px;background:radial-gradient(circle at 30% 30%, #fff6,#ffe7c1 10%, #ffe3a2 30%, #c6a24a 60%);display:flex;align-items:center;justify-content:center;border:3px solid rgba(255,255,255,0.6);box-shadow:0 8px 30px rgba(210,176,74,0.12)}
+  .seal-inner{font-weight:900;color:#3b2b0d;transform:rotate(-6deg);text-align:center}
+  .micro{font-size:10px;color:var(--muted);margin-top:8px}
+  .watermark{position:absolute;right:14px;bottom:10px;font-weight:900;color:rgba(40,40,80,0.07);font-size:42px;transform:rotate(-18deg);pointer-events:none}
+  .card-footer{position:absolute;left:18px;bottom:14px;right:18px;display:flex;justify-content:space-between;align-items:center}
+  .signature{font-family:'Playfair Display', serif;font-weight:700;color:#222}
+  /* responsiveness */
+  @media (max-width:980px){
+    .wrap{grid-template-columns:1fr}
+    .card{height:260px}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Left controls -->
+    <div class="panel">
+      <h1>Professional Gay License — (Novelty)</h1>
+      <p class="lead">Fill in details, upload a photo, and download a high-res PNG or print. This is a playful, novelty certificate — not an official document.</p>
+
+      <label for="fullName">Full name</label>
+      <input id="fullName" type="text" placeholder="Full name" value="Audric" />
+
+      <label for="pronouns">Pronouns</label>
+      <input id="pronouns" type="text" placeholder="e.g. they/them, he/him, she/her" value="he/him" />
+
+      <label for="title">Title / Style</label>
+      <input id="title" type="text" placeholder="e.g. Certified Femboy, Softboy Pro" value="Certified Femboy" />
+
+      <div style="display:flex;gap:8px">
+        <div style="flex:1">
+          <label for="issue">Issue date</label>
+          <input id="issue" type="date" />
+        </div>
+        <div style="flex:1">
+          <label for="expiry">Expiry date</label>
+          <input id="expiry" type="date" />
+        </div>
+      </div>
+
+      <label for="licenseId">License ID (or press Generate)</label>
+      <div style="display:flex;gap:8px;align-items:center">
+        <input id="licenseId" type="text" placeholder="GL-2025-XXXX" />
+        <button class="btn ghost" id="genId">Generate</button>
+      </div>
+
+      <label for="notes">Notes / Additional line (optional)</label>
+      <textarea id="notes" placeholder="E.g. 'Mandatory sparkle twice daily'">Mandatory sparkle twice daily</textarea>
+
+      <label>Upload photo (drag & drop or click)</label>
+      <div id="fileDrop" class="fileDrop" tabindex="0">Drop photo here or click to upload</div>
+      <input id="photoInput" type="file" accept="image/*" style="display:none" />
+
+      <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+        <button class="btn" id="updateBtn">Update Preview</button>
+        <button class="btn" id="downloadBtn">Download PNG</button>
+        <button class="btn ghost" id="printBtn">Print / Save PDF</button>
+      </div>
+
+      <div style="margin-top:12px" class="small">Tip: use "Download PNG" for sharing, "Print" to save PDF from your browser's print dialog.</div>
+
+      <div style="margin-top:18px">
+        <div class="small" style="font-weight:700;margin-bottom:6px">Accessibility / Keyboard</div>
+        <div class="small">Enter fields and press <strong>Update Preview</strong>. Press <strong>Enter</strong> in text fields to update quickly.</div>
+      </div>
+    </div>
+
+    <!-- Right preview -->
+    <div class="panel license-preview">
+      <div id="licenseCard" class="card" role="article" aria-label="Gay License Preview">
+        <div class="id-col">
+          <div>
+            <div class="brand">GOVERNMENT OF FABULOUSNESS</div>
+            <div class="subtitle">Department of Identity &amp; Sparkle</div>
+          </div>
+
+          <div style="margin-top:12px">
+            <div class="small">License ID</div>
+            <div id="previewId" style="font-weight:800;font-size:14px;color:#111">GL-2025-0001</div>
+          </div>
+
+          <div style="margin-top:8px">
+            <div class="small">Issuance</div>
+            <div id="previewIssue" class="small">2025-01-01</div>
+          </div>
+
+          <div style="margin-top:10px">
+            <div class="gold-seal" aria-hidden="true"><div class="seal-inner">OFFICIAL<br>SEAL</div></div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:14px;align-items:center;flex:1;padding-right:20px">
+          <div class="photo" id="previewPhoto" aria-hidden="true">
+            <div style="text-align:center;color:var(--muted);font-weight:700">Photo</div>
+          </div>
+
+          <div class="info">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start">
+              <div>
+                <div class="name" id="previewName">Audric</div>
+                <div class="micro" id="previewPronouns">he/him</div>
+              </div>
+              <div style="text-align:right">
+                <div class="badge" id="previewTitle">Certified Femboy</div>
+                <div class="micro" id="previewExpiry" style="margin-top:6px;color:var(--muted)">Expires 2026-01-01</div>
+              </div>
+            </div>
+
+            <div class="lines">
+              <div style="flex:1">
+                <div class="small" style="font-weight:700">Notes</div>
+                <div id="previewNotes" class="small">Mandatory sparkle twice daily</div>
+              </div>
+              <div style="width:220px">
+                <div class="barcode" aria-hidden="true"></div>
+                <div class="micro" style="margin-top:6px">Digital ID stripe</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div>
+            <div class="signature">Registrar of Glitter</div>
+            <div class="micro">Authorized Signature</div>
+          </div>
+          <div class="micro" style="text-align:right">Issued by the International Council of Fabulousness</div>
+        </div>
+
+        <div class="watermark" aria-hidden="true">NOVELTY</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // DOM
+  const fullName = document.getElementById('fullName');
+  const pronouns = document.getElementById('pronouns');
+  const titleEl = document.getElementById('title');
+  const issue = document.getElementById('issue');
+  const expiry = document.getElementById('expiry');
+  const licenseId = document.getElementById('licenseId');
+  const notes = document.getElementById('notes');
+  const fileDrop = document.getElementById('fileDrop');
+  const photoInput = document.getElementById('photoInput');
+  const genIdBtn = document.getElementById('genId');
+  const updateBtn = document.getElementById('updateBtn');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const printBtn = document.getElementById('printBtn');
+
+  // preview refs
+  const previewName = document.getElementById('previewName');
+  const previewPronouns = document.getElementById('previewPronouns');
+  const previewTitle = document.getElementById('previewTitle');
+  const previewId = document.getElementById('previewId');
+  const previewIssue = document.getElementById('previewIssue');
+  const previewExpiry = document.getElementById('previewExpiry');
+  const previewNotes = document.getElementById('previewNotes');
+  const previewPhoto = document.getElementById('previewPhoto');
+
+  // sensible defaults for dates
+  (function setDefaults(){
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth()+1).padStart(2,'0');
+    const dd = String(today.getDate()).padStart(2,'0');
+    issue.value = `${yyyy}-${mm}-${dd}`;
+    const next = new Date(today); next.setFullYear(next.getFullYear()+1);
+    expiry.value = `${next.getFullYear()}-${String(next.getMonth()+1).padStart(2,'0')}-${String(next.getDate()).padStart(2,'0')}`;
+    licenseId.value = `GL-${yyyy}-${Math.floor(Math.random()*9000+1000)}`;
+    updatePreview();
+  })();
+
+  // Update preview live
+  function updatePreview(){
+    previewName.textContent = fullName.value.trim() || 'Unnamed';
+    previewPronouns.textContent = pronouns.value.trim() || '';
+    previewTitle.textContent = titleEl.value.trim() || 'Certified';
+    previewId.textContent = licenseId.value.trim() || '—';
+    previewIssue.textContent = issue.value || '—';
+    previewExpiry.textContent = expiry.value || '—';
+    previewNotes.textContent = notes.value.trim() || '';
+  }
+  updateBtn.addEventListener('click', updatePreview);
+  // Enter key updates
+  [fullName, pronouns, titleEl, licenseId, notes].forEach(el => {
+    el.addEventListener('keypress', (e)=> { if(e.key==='Enter'){ e.preventDefault(); updatePreview(); }});
+  });
+
+  // Generate ID
+  genIdBtn.addEventListener('click', ()=>{
+    const yyyy = new Date().getFullYear();
+    licenseId.value = `GL-${yyyy}-${Math.floor(Math.random()*900000+100000)}`;
+    updatePreview();
+  });
+
+  // Photo upload drag/drop
+  function handleFile(file){
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e){
+      previewPhoto.innerHTML = `<img src="${e.target.result}" alt="photo">`;
+    };
+    reader.readAsDataURL(file);
+  }
+  fileDrop.addEventListener('click', ()=> photoInput.click());
+  fileDrop.addEventListener('dragover', (e)=>{ e.preventDefault(); fileDrop.style.borderColor = '#d1c4ff'; });
+  fileDrop.addEventListener('dragleave', ()=>{ fileDrop.style.borderColor = '#eee'; });
+  fileDrop.addEventListener('drop', (e)=>{ e.preventDefault(); fileDrop.style.borderColor = '#eee'; const f = e.dataTransfer.files[0]; if(f) handleFile(f); });
+  photoInput.addEventListener('change', ()=> { handleFile(photoInput.files[0]); });
+
+  // Download PNG function (renders the card to canvas using SVG foreignObject)
+  async function downloadPNG(){
+    updatePreview();
+    const card = document.getElementById('licenseCard');
+    const rect = card.getBoundingClientRect();
+    const scale = 2; // save at 2x
+    // Clone node to avoid pointer events and to ensure consistent layout
+    const clone = card.cloneNode(true);
+    // Remove transient elements if any
+    clone.style.transform = 'none';
+    // Get computed styles - we will rely on fonts available in browser
+    // Build SVG wrapper
+    const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${Math.round(rect.width*scale)}' height='${Math.round(rect.height*scale)}'>
+      <foreignObject width='100%' height='100%'>
+        <div xmlns='http://www.w3.org/1999/xhtml' style='width:${rect.width}px;height:${rect.height}px;font-family:Inter, system-ui, -apple-system;'>
+          ${clone.outerHTML}
+        </div>
+      </foreignObject>
+    </svg>`;
+    const svg64 = btoa(unescape(encodeURIComponent(svg)));
+    const imgSrc = 'data:image/svg+xml;base64,' + svg64;
+    const img = new Image();
+    // If there is an inline image (photo) that is a dataURL, the SVG will include it; otherwise some browsers may block cross-origin images.
+    img.onload = function(){
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.round(rect.width*scale);
+      canvas.height = Math.round(rect.height*scale);
+      const ctx = canvas.getContext('2d');
+      // fill white background
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.drawImage(img,0,0,canvas.width,canvas.height);
+      // watermark small text
+      ctx.fillStyle = 'rgba(0,0,0,0.06)';
+      ctx.font = `${12*scale}px Inter`;
+      ctx.fillText('Novelty — not an official government document', 12*scale, canvas.height - 12*scale);
+      const a = document.createElement('a');
+      a.download = `${(fullName.value||'name').replace(/\s+/g,'_')}_gay_license.png`;
+      a.href = canvas.toDataURL('image/png');
+      a.click();
+      // small confetti celebration (simple)
+      smallConfetti();
+    };
+    img.onerror = function(){
+      alert('Download failed — try Print / Save as PDF instead (or use Chrome/Edge).');
+    };
+    img.src = imgSrc;
+  }
+
+  // Print handler
+  printBtn.addEventListener('click', ()=>{
+    updatePreview();
+    // open a new window with just the card for printing
+    const card = document.getElementById('licenseCard').cloneNode(true);
+    const w = window.open('', '_blank');
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @media print {
+        body { margin:0; }
+      }
+      body { display:flex; align-items:center; justify-content:center; height:100vh; background:#fff; font-family:Inter, system-ui;}
+      .card { transform: scale(1); box-shadow:none; border: none; }
+    `;
+    w.document.head.appendChild(style);
+    w.document.body.appendChild(card);
+    w.document.close();
+    setTimeout(()=> w.print(), 500);
+  });
+
+  // wire download button
+  downloadBtn.addEventListener('click', downloadPNG);
+
+  // small confetti effect after download
+  function smallConfetti(){
+    const frag = document.createDocumentFragment();
+    for(let i=0;i<30;i++){
+      const el = document.createElement('div');
+      el.style.position='fixed';
+      el.style.left = (50 + (Math.random()*300-150)) + 'px';
+      el.style.top = (150 + Math.random()*200) + 'px';
+      el.style.width = '10px';
+      el.style.height = '6px';
+      el.style.background = ['#ff5cc8','#6f2ca2','#ffd24d','#bde3ff'][Math.floor(Math.random()*4)];
+      el.style.transform = `rotate(${Math.random()*360}deg)`;
+      el.style.opacity = '0.95';
+      el.style.borderRadius = '2px';
+      el.style.zIndex = 9999;
+      el.style.transition = 'transform 900ms ease, top 900ms ease, opacity 1200ms ease';
+      document.body.appendChild(el);
+      setTimeout(()=> {
+        el.style.top = (window.innerHeight + 50) + 'px';
+        el.style.transform = `translateX(${(Math.random()*400-200)}px) rotate(${Math.random()*360}deg)`;
+        el.style.opacity = '0';
+      }, 50 + Math.random()*200);
+      setTimeout(()=> el.remove(), 1200);
+    }
+  }
+
+  // live update when typing (small debounce)
+  let debounceTimer = null;
+  [fullName, pronouns, titleEl, licenseId, issue, expiry, notes].forEach(inp=>{
+    inp.addEventListener('input', ()=> {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(()=> updatePreview(), 220);
+    });
+  });
+
+</script>
+</body>
+</html>
